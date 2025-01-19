@@ -36,4 +36,8 @@ public class LivroService {
         }
     }
 
+    public List<Livro> buscarLivrosPorAutor(String nomeAutor) {
+        return livroRepository.findByAutoresNomeContainingIgnoreCase(nomeAutor);
+    }
+
 }
