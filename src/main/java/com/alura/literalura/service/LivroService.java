@@ -4,7 +4,6 @@ import com.alura.literalura.model.Autor;
 import com.alura.literalura.model.Livro;
 import com.alura.literalura.repository.AutorRepository;
 import com.alura.literalura.repository.LivroRepository;
-import jakarta.persistence.Entity;
 import jakarta.persistence.EntityGraph;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;

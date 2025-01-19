@@ -1,20 +1,26 @@
 package com.alura.literalura.model;
 
-import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonAlias;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import jakarta.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @NamedEntityGraph(name = "Livro.autores", attributeNodes = @NamedAttributeNode("autores"))
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Livro {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @JsonAlias("title")
     private String titulo;
+
+    @JsonAlias("isbn")
     private String isbn;
-    //private int anoPublicacao;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
@@ -22,15 +28,8 @@ public class Livro {
             joinColumns = @JoinColumn(name = "livro_id"),
             inverseJoinColumns = @JoinColumn(name = "autor_id")
     )
+
     private Set<Autor> autores = new HashSet<>();
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getTitulo() {
         return titulo;
@@ -48,20 +47,24 @@ public class Livro {
         this.isbn = isbn;
     }
 
-//    public int getAnoPublicacao() {
-//        return anoPublicacao;
-//    }
-//
-//    public void setAnoPublicacao(int anoPublicacao) {
-//        this.anoPublicacao = anoPublicacao;
-//    }
-
     public Set<Autor> getAutores() {
         return autores;
     }
 
-    public void setAutors(Set<Autor> autores) {
+    public void setAutores(Set<Autor> autores) {
         this.autores = autores;
     }
 
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Titulo: ").append(titulo).append("\n");
+        sb.append("ISBN: ").append(isbn).append("\n");
+        sb.append("Autores: ");
+        for (Autor autor : autores) {
+            sb.append(autor.getNome()).append(", ");
+        }
+
+        return sb.toString();
+    }
 }

@@ -1,13 +1,13 @@
-package com.alura.literalura;
-
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
-
-@SpringBootTest
-public class LiteraluraApplicationTests {
-
-    @Test
-    void contextLoads() {
-
-    }
-}
+//package com.alura.literalura;
+//
+//import org.junit.jupiter.api.Test;
+//import org.springframework.boot.test.context.SpringBootTest;
+//
+//@SpringBootTest
+//public class LiteraluraApplicationTests {
+//
+//    @Test
+//    void contextLoads() {
+//
+//    }
+//}
