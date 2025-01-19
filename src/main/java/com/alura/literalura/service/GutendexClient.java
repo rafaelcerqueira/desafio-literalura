@@ -15,7 +15,7 @@ import java.util.List;
 
 @Service
 public class GutendexClient {
-    private static final String API_URL = "https://gutendex.com/books";
+    private static final String API_URL = "http://gutendex.com/books/";
     public final HttpClient httpClient;
     private final ObjectMapper objectMapper;
 

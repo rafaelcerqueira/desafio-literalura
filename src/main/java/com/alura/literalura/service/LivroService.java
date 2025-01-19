@@ -40,4 +40,7 @@ public class LivroService {
         return livroRepository.findByAutoresNomeContainingIgnoreCase(nomeAutor);
     }
 
+    public List<Livro> listarTodosOsLivros() {
+        return livroRepository.findAll();
+    }
 }
