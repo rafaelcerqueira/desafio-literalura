@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
+@NamedEntityGraph(name = "Livro.autores", attributeNodes = @NamedAttributeNode("autores"))
 public class Livro {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -13,6 +14,7 @@ public class Livro {
 
     private String titulo;
     private String isbn;
+    //private int anoPublicacao;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
@@ -46,6 +48,14 @@ public class Livro {
         this.isbn = isbn;
     }
 
+//    public int getAnoPublicacao() {
+//        return anoPublicacao;
+//    }
+//
+//    public void setAnoPublicacao(int anoPublicacao) {
+//        this.anoPublicacao = anoPublicacao;
+//    }
+
     public Set<Autor> getAutores() {
         return autores;
     }
@@ -53,4 +63,5 @@ public class Livro {
     public void setAutors(Set<Autor> autores) {
         this.autores = autores;
     }
+
 }

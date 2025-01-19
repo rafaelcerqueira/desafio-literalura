@@ -1,5 +1,6 @@
 package com.alura.literalura;
 
+import com.alura.literalura.model.Livro;
 import com.alura.literalura.service.LivroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -30,6 +31,7 @@ public class LiteraluraApplication implements CommandLineRunner {
 			System.out.println("3 - Buscar Livros por Autor");
 			System.out.println("0 - Sair");
 			System.out.println(">>> ");
+
 			int opcao = scanner.nextInt();
 			scanner.nextLine();
 
@@ -38,27 +40,29 @@ public class LiteraluraApplication implements CommandLineRunner {
                     try {
                         livroService.buscarLivrosDaApi();
                         System.out.println("Livros buscados e armazenados com sucesso!");
-                        break;
                     } catch (Exception e) {
-						System.out.println("Erro ao buscar livros da API: " + e.getMessage());;
+						System.out.println("Erro ao buscar livros da API: " + e.getMessage());
                     }
-                case 2:
+					break;
+				case 2:
                     try {
-                        livroService.listarTodosOsLivros().forEach(System.out::println);
-                        break;
+                        livroService.listarTodosOsLivros().forEach(this::exibirInformacoesLivro);
+
                     } catch (Exception e) {
-						System.out.println("Erro ao listar livros: " + e.getMessage());;
+						System.out.println("Erro ao listar livros: " + e.getMessage());
                     }
-                case 3:
+					break;
+				case 3:
                     try {
                         System.out.println("Digite o nome do autor: ");
                         String nomeAutor = scanner.nextLine();
-                        livroService.buscarLivrosPorAutor(nomeAutor).forEach(System.out::println);
-                        break;
+                        livroService.buscarLivrosPorAutor(nomeAutor).forEach(this::exibirInformacoesLivro);
+
                     } catch (Exception e) {
-						System.out.println("Erro ao buscar livros por autor: " + e.getMessage());;
+						System.out.println("Erro ao buscar livros por autor: " + e.getMessage());
                     }
-                case 0:
+					break;
+				case 0:
 					running = false;
 					System.out.println("Saindo...");
 					break;
@@ -68,6 +72,18 @@ public class LiteraluraApplication implements CommandLineRunner {
 			}
 		}
 		scanner.close();
+		System.exit(0);
+	}
+
+	private void exibirInformacoesLivro(Livro livro) {
+		StringBuilder sb = new StringBuilder();
+		sb.append("Título: ").append(livro.getTitulo()).append("\n");
+		sb.append("ISBN: ").append(livro.getTitulo()).append("\n");
+		sb.append("Autores: ");
+		livro.getAutores().forEach(autor -> sb.append(autor.getNome()).append(", "));
+		System.out.println(sb.toString());
 	}
 
 }
+
+
