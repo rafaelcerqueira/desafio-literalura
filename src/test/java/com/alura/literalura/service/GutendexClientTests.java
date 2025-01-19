@@ -1,7 +1,6 @@
-package com.alura.literalura;
+package com.alura.literalura.service;
 
 import com.alura.literalura.model.Livro;
-import com.alura.literalura.service.GutendexClient;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
