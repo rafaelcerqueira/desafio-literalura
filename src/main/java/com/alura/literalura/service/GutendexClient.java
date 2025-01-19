@@ -1,5 +1,7 @@
 package com.alura.literalura.service;
 
+import com.alura.literalura.model.Autor;
+import com.alura.literalura.model.Livro;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Service;
