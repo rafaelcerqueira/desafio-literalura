@@ -15,7 +15,7 @@ public class Autor {
     private String nome;
 
     @ManyToMany(mappedBy = "autores")
-    private Set<List> livros = new HashSet<>();
+    private Set<Livro> livros = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -33,11 +33,11 @@ public class Autor {
         this.nome = nome;
     }
 
-    public Set<List> getLivros() {
+    public Set<Livro> getLivros() {
         return livros;
     }
 
-    public void setLivros(Set<List> livros) {
+    public void setLivros(Set<Livro> livros) {
         this.livros = livros;
     }
 }
